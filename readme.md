@@ -13,26 +13,27 @@ Before setting up and using the apps which you will find the configuration files
 The tl;dr for setting up a Linux server properly (to the best of my knowledge) is:
 
 ```bash
-# Update the package index:
+# Update the package index to get latest package information
 sudo apt update
 
-# Install required packages:
+# Install Docker and Docker Compose packages
+# - docker.io: The Docker container runtime engine
+# - docker-compose: Tool for defining and running multi-container Docker applications
+# - The -y flag automatically answers "yes" to installation prompts
 sudo apt install -y docker.io docker-compose
 
-# Start and enable Docker:
+# Start the Docker service immediately
 sudo systemctl start docker
 
-# Install required packages:  
-sudo apt install -y docker.io docker-compose
-  
-# Start and enable Docker: 
-sudo systemctl start docker
+# Enable Docker to start automatically on system boot
 sudo systemctl enable docker
 
-# Add your user to the Docker group:
+# Add your current user to the Docker group to run Docker commands without sudo
+# $USER is a variable that contains your current username
 sudo usermod -aG docker $USER
 
-# Log out and log back in to apply the group changes.
+# Log out and log back in (or restart) to apply the group changes
+# This is required for the Docker group membership to take effect
 ```
 
 
